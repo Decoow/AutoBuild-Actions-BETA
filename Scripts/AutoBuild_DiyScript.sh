@@ -18,8 +18,19 @@ Firmware_Diy_Core() {
 	Author_URL=AUTO
 	# 自定义作者网站或域名, AUTO: [自动识别]
 	
-	Default_Flag=AUTO
+	# Default_Flag=AUTO
 	# 固件标签 (名称后缀), 适用不同配置文件, AUTO: [自动识别]
+	case "${CONFIG_FILE}" in
+        *Clash*)
+            Default_Flag="Clash"
+            ;;
+        *Lite*)
+            Default_Flag="Lite"
+            ;;
+        *)
+            Default_Flag="Full"
+            ;;
+    esac
 	
 	Default_IP="192.168.6.1"
 	# 固件 IP 地址
