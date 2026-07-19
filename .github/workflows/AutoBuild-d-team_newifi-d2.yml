@@ -192,6 +192,22 @@ jobs:
         sudo -E apt clean
         sudo timedatectl set-timezone "Asia/Shanghai"
 
+    - name: Aggressive Disk Cleanup
+      run: |
+        echo "=== Before Cleanup ==="
+        df -h
+        sudo apt-get autoremove -y
+        sudo apt-get clean
+        sudo rm -rf /var/cache/apt/archives/*
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf /opt/ghc
+        sudo rm -rf /usr/local/share/boost
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        sudo rm -rf /usr/share/swift /usr/local/lib/android
+        sudo rm -rf /opt/hostedtoolcache
+        echo "=== After Cleanup ==="
+        df -h
+
     - name: Clone Openwrt Source Code
       run: |
         git clone -b $REPO_BRANCH $REPO_URL openwrt
