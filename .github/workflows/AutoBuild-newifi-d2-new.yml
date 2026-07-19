@@ -4,7 +4,7 @@
 #   Author: Hyy2001X                                      #
 ###########################################################
 
-name: x86_64
+name: NEWIFI D2
 
 on:
   repository_dispatch:
@@ -26,11 +26,12 @@ on:
     inputs:
       Tempoary_CONFIG:
         description: '配置文件'
-        default: 'x86_64'
+        default: 'd-team_newifi-d2'
         type: choice
         options:
-          - 'x86_64'
-          - 'x86_64-AP'
+          - 'd-team_newifi-d2'
+          - 'd-team_newifi-d2-Clash'
+          - 'd-team_newifi-d2-Lite'
       Tempoary_FLAG:
         description: '固件标签'
         default: 'AUTO'
@@ -38,8 +39,8 @@ on:
         options:
           - 'AUTO'
           - 'Full'
-          - 'AP'
-          - 'Test'
+          - 'Clash'
+          - 'Lite'
       Tempoary_IP:
         description: '固件 IP 地址 [可选]'
         default: ''
@@ -61,13 +62,15 @@ on:
 ### 环境变量设置
 env:
 # 编译时调用的 [.config] 文件名称
-  CONFIG_FILE: x86_64
+  CONFIG_FILE: d-team_newifi-d2
 # 源码仓库:分支
-  DEFAULT_SOURCE: immortalwrt/immortalwrt:openwrt-24.10
+  DEFAULT_SOURCE: coolsnowwolf/lede:master
 # 删除无用文件以增加编译空间
   DELETE_USELESS_FILES: true
 # 删除早期的 workflow 任务
   DELETE_OLD_WORKFLOW: false
+# Cache 加速编译
+  CACHE_ACCELERATE: false
 ### 结束
 ### 请按需求修改以上内容
 
